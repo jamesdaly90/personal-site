@@ -10,6 +10,8 @@
   --line: 1.6;
   --color: #1a1a1a;
   --muted: #999;
+  --gap: 48px;
+  --pad: 40px;
 }
 
 html {
@@ -22,76 +24,48 @@ body {
   line-height: var(--line);
   color: var(--color);
   background: #fff;
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 64px 32px 96px;
+  padding: var(--pad);
 }
-
-/* Header */
-
-header {
-  margin-bottom: 48px;
-}
-
-h1 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0.25em;
-}
-
-.subtitle {
-  color: var(--muted);
-}
-
-.subtitle a {
-  color: var(--muted);
-}
-
-.subtitle a:hover {
-  color: var(--color);
-}
-
-/* Sections */
 
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-section h2 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 1em;
-}
-
-section > p {
-  margin-bottom: 0.75em;
-}
-
-/* Two-column entries */
-
-.entry {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0 16px;
-  margin-bottom: 1em;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  max-width: 1400px;
 }
 
-.entry:last-child {
-  margin-bottom: 0;
+/* Avatar */
+
+.avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #e8e8e8;
+  margin-bottom: 1.5em;
 }
 
-.entry-label {
-  color: var(--muted);
-  padding-top: 0;
-  white-space: nowrap;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Typography */
 
+h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+
 p {
-  margin-bottom: 0.25em;
+  margin-bottom: 1em;
 }
 
 p:last-child {
@@ -107,18 +81,47 @@ a:hover {
   text-decoration: underline;
 }
 
+hr {
+  border: none;
+  margin: 1.5em 0;
+}
+
+/* Entries */
+
+.entry {
+  margin-bottom: 1.5em;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.date {
+  color: var(--muted);
+}
+
+.role {
+  color: var(--muted);
+}
+
 .meta {
   color: var(--muted);
 }
 
 /* Responsive */
 
-@media (max-width: 480px) {
-  body {
-    padding: 40px 24px 64px;
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  main {
+    grid-template-columns: 1fr;
   }
 
-  .entry {
-    grid-template-columns: 80px 1fr;
+  body {
+    padding: 24px;
   }
 }
