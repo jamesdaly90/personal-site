@@ -9,9 +9,7 @@
   --size: 13px;
   --line: 1.6;
   --color: #1a1a1a;
-  --muted: #888;
-  --gap: 48px;
-  --pad: 40px;
+  --muted: #999;
 }
 
 html {
@@ -24,32 +22,76 @@ body {
   line-height: var(--line);
   color: var(--color);
   background: #fff;
-  padding: var(--pad);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--gap);
-  max-width: 1400px;
-}
+/* Header */
 
-/* Typography */
+header {
+  margin-bottom: 48px;
+}
 
 h1 {
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.25em;
 }
 
-h2 {
+.subtitle {
+  color: var(--muted);
+}
+
+.subtitle a {
+  color: var(--muted);
+}
+
+.subtitle a:hover {
+  color: var(--color);
+}
+
+/* Sections */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+section h2 {
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
-p {
+section > p {
+  margin-bottom: 0.75em;
+}
+
+/* Two-column entries */
+
+.entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 16px;
   margin-bottom: 1em;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-label {
+  color: var(--muted);
+  padding-top: 0;
+  white-space: nowrap;
+}
+
+/* Typography */
+
+p {
+  margin-bottom: 0.25em;
 }
 
 p:last-child {
@@ -65,55 +107,18 @@ a:hover {
   text-decoration: underline;
 }
 
-hr {
-  border: none;
-  border-top: 1px solid transparent;
-  margin: 1.5em 0;
-  /* acts as a visual spacer; use the — character in HTML for the dash */
-}
-
-/* Entries */
-
-.entry {
-  margin-bottom: 1.5em;
-}
-
-.entry:last-child {
-  margin-bottom: 0;
-}
-
-.date {
-  color: var(--muted);
-}
-
-.org {
-  /* no extra styling — same weight as body */
-}
-
-.role {
-  color: var(--muted);
-}
-
 .meta {
   color: var(--muted);
 }
 
-/* Section divider rendered as — in HTML becomes an hr here */
-/* The columns have no visible borders; whitespace does the work */
+/* Responsive */
 
-/* Responsive: stack to 2 columns on tablet, 1 on mobile */
-@media (max-width: 900px) {
-  main {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 480px) {
   body {
-    padding: 24px;
+    padding: 40px 24px 64px;
+  }
+
+  .entry {
+    grid-template-columns: 80px 1fr;
   }
 }
